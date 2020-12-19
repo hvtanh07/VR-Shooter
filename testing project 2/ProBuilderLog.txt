@@ -1,6 +1,0 @@
-Triangulation failed: Additional vertices were inserted.
-Triangulation failed: Additional vertices were inserted.
-Triangulation failed: Additional vertices were inserted.
-Triangulation failed: Additional vertices were inserted.
-Triangulation failed: Additional vertices were inserted.
-Triangulation failed: Additional vertices were inserted.
