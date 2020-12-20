@@ -12,11 +12,15 @@ public class Player : MonoBehaviour
     public float gunDamage = 5;
     public int startingHealth = 100;
     public float timeBetweenShot = 0.5f;
-    public int currentHealth;   
+    public int currentHealth;
+    public int currentMoney =0;
     public bool haveGun;
+    public GameObject StateButton;
 
     public bool[] accquiredItem;
     public TextMesh healthText;
+    public TextMesh MoneyText;
+    public TextMesh StateText;
     public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
     public GameObject Gun;
@@ -27,10 +31,12 @@ public class Player : MonoBehaviour
     bool teleportable;
     bool isDead;
     float timer;
+
     
 
     private void Start()
     {
+        StateButton.SetActive(false);
         haveGun = false;
         accquiredItem = new bool[10];
         for (int i = 0; i < accquiredItem.Length; i++) accquiredItem[i] = false;
@@ -38,6 +44,8 @@ public class Player : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         currentHealth = startingHealth;
         healthText.text = currentHealth.ToString();
+        MoneyText.text = currentMoney.ToString();
+        StateText.text = "  ";
     }
     // Update is called once per frame
     void Update()
@@ -65,7 +73,15 @@ public class Player : MonoBehaviour
     {
         // Set the death flag so this function won't be called again.
         isDead = true;
-       
+        Time.timeScale = 0.0f;
+        StateText.text = "YOU DIED!!!";
+        StateButton.SetActive(true);
+    }
+    public void Won()
+    {
+        Time.timeScale = 0.0f;
+        StateText.text = "YOU WON!!!";
+        StateButton.SetActive(true);
     }
     private void CheckHit()
     {
@@ -90,6 +106,11 @@ public class Player : MonoBehaviour
             currentHealth = startingHealth;
         healthText.text = currentHealth.ToString();
     }
+    public void AddMoney(int amount)
+    {
+        currentMoney += amount;      
+        MoneyText.text = currentMoney.ToString();
+    }
 
     public void CollectItem(int Itemindex)
     {
@@ -111,6 +132,14 @@ public class Player : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamege(gunDamage);
+        }
+        else
+        {
+            Bosss boss = hit.transform.GetComponent<Bosss>();
+            if (boss != null)
+            {
+                boss.TakeDamege(gunDamage);
+            }
         }
         Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         //Gun sound

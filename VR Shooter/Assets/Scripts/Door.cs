@@ -49,8 +49,16 @@ public class Door : MonoBehaviour
     {
         if (playerscript.accquiredItem[Doorindex])
         {
-            indicator.material.color = Color.green;
-            unlocked = true;                      
+            if (Doorindex != 6)
+            {
+                indicator.material.color = Color.green;
+                unlocked = true;
+            }
+            else
+            {
+                playerscript.Won();
+            }
+
             //open door with sound
         }
         else

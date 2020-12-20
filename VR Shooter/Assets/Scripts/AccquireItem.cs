@@ -26,6 +26,12 @@ public class AccquireItem : MonoBehaviour
         Destroy(gameObject);
         playerscript.CollectGun();
     }
+
+    public void GunsAcquired()
+    {
+        Destroy(gameObject);
+        playerscript.CollectGun();
+    }
     public void HealthAcquired()
     {
         Destroy(gameObject);

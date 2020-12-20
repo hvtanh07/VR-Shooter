@@ -3,104 +3,109 @@ using UnityEngine.AI;
 
 public class Bosss : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public Transform[] points;
+    private int destPoint = 0;
+    private NavMeshAgent agent;
+    public float enemyHealth = 100;
+    public GameObject keydrop;
+    GameObject player;
+    Animator anim;
+    Player playerscript;
+  
+    bool followingPlayer;
 
-    public Transform player;
+    public float timeBetweenAttacks = 2f;
+    public int attackDamage = 10;
+    public float distoDetect = 15;
+    bool attacked;
 
-    public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
-
-    //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public GameObject projectile;
-
-    //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-
-    private void Awake()
+    void Start()
     {
-        player = GameObject.Find("Player").transform;
+        anim = GetComponent<Animator>();
+        anim.SetBool("Walk Forward", true);
+        followingPlayer = true;
+        player = GameObject.FindGameObjectWithTag("Player");      
+        playerscript = player.GetComponent<Player>();
         agent = GetComponent<NavMeshAgent>();
+
+       
+        agent.autoBraking = false;
+
+        GotoNextPoint();
     }
 
-    private void Update()
+
+    void GotoNextPoint()
     {
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        
+        // Returns if no points have been set up
+        if (points.Length == 0)
+            return;
+        Debug.Log("Going");
+        // Set the agent to go to the currently selected destination.
+        agent.destination = points[destPoint].position;
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        // Choose the next point in the array as the destination,
+        // cycling to the start if necessary.
+        destPoint = (destPoint + 1) % points.Length;
     }
 
-    private void Patroling()
+
+    void Update()
     {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
+        // Choose the next destination point when the agent gets
+        // close to the current one.
+       
+        if (enemyHealth > 0)
+        {
+            RaycastHit hit;
+            float dis = Vector3.Distance(transform.position, player.transform.position);
+            if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, 200f))
+            {
+                if (hit.transform.tag == "Player")
+                {
+                    if (dis < distoDetect || attacked)
+                    {
+                        if (enemyHealth > 0 && followingPlayer)
+                        {
+                            
+                            agent.SetDestination(player.transform.position);
+                        }
+                    }
+                    else
+                    {
+                        if (!agent.pathPending && agent.remainingDistance < agent.stoppingDistance + 0.5f)
+                            GotoNextPoint();
+                    }
+                }
+                else
+                {
+                    if (!agent.pathPending && agent.remainingDistance < agent.stoppingDistance + 0.5f)
+                        GotoNextPoint();
+                    attacked = false;
+                }               
+            }
+        }
     }
-    private void SearchWalkPoint()
+    public void TakeDamege(float amount)
     {
-        //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
+        attacked = true;
+        enemyHealth -= amount;
+        if (enemyHealth <= 0)
+        {
+            death();
+            gameObject.layer = 2;
+        }
+        else anim.SetTrigger("Damaged");
     }
 
-    private void ChasePlayer()
+    private void death()
     {
-        agent.SetDestination(player.position);
+        GetComponent<NavMeshAgent>().enabled = false;
+        anim.SetTrigger("Die");
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z);
+        Instantiate(keydrop, pos, transform.rotation);
+        Destroy(gameObject, 1.4f);
     }
-
-    private void AttackPlayer()
-    {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        //if (!alreadyAttacked)
-        //{
-        //    Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        //    rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-
-        //    alreadyAttacked = true;
-        //    Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        //}
-    }
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
 }
