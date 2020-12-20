@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7155bcc6fd50c704988a438bf970474b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -57,7 +56,7 @@ MonoBehaviour:
   projectile: {fileID: 2997932961789453313, guid: 707432344deddfe4495a40dad2f2499c,
     type: 3}
   sightRange: 30
-  attackRange: 5
+  attackRange: 7
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &4061204346756332062
@@ -507,7 +506,7 @@ MonoBehaviour:
   projectile: {fileID: 2997932961789453313, guid: 707432344deddfe4495a40dad2f2499c,
     type: 3}
   sightRange: 30
-  attackRange: 5
+  attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &7402178445383558289
