@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     public GameObject hitEffect;
     public GameObject Gun;
     
-    GameObject telePoint;
     Animator gunanim;
     CharacterController controller;
 
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour
         haveGun = false;
         accquiredItem = new bool[10];
         for (int i = 0; i < accquiredItem.Length; i++) accquiredItem[i] = false;
-        telePoint = GameObject.FindGameObjectWithTag("TeleportPoint");
         gunanim = Gun.GetComponent<Animator>();
         controller = gameObject.GetComponent<CharacterController>();
         currentHealth = startingHealth;
@@ -50,26 +48,10 @@ public class Player : MonoBehaviour
         move = Camera.main.transform.TransformDirection(move);
         move.y -= gravity;
         controller.Move(move);
-        
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 100, Color.red);
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootingRange))
-        {
-            float dis = Vector3.Distance(hit.point, Camera.main.transform.position);
-            if (dis < movingRange && hit.collider.tag == "Ground")
-            {
-                teleportable = true;
-                telePoint.transform.position = hit.point;
-            }
-            else
-            {
-                teleportable = false;
-                telePoint.transform.position = new Vector3(100, 100, 100);
-            }
-        }
+                    
         if (Input.GetButtonDown("Fire1"))
         {
-            CheckHit(hit);
+            CheckHit();
         }
     }
     public void TakeDamage(int amount)
@@ -85,16 +67,12 @@ public class Player : MonoBehaviour
         isDead = true;
        
     }
-    private void CheckHit(RaycastHit hit)
+    private void CheckHit()
     {
+        RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootingRange))
-        {
-            if (hit.collider.tag == "Ground" && teleportable)
-            {
-                Teleport(hit.point);
-            }
-            
-            else if (haveGun && hit.collider.tag != "DoorPanel" && hit.collider.tag != "AcquireItem")
+        {           
+            if (haveGun && hit.collider.tag != "DoorPanel" && hit.collider.tag != "AcquireItem")
             {
                 if (timer >= timeBetweenShot)
                 {
@@ -136,13 +114,5 @@ public class Player : MonoBehaviour
         }
         Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         //Gun sound
-    }
-
-    private void Teleport(Vector3 targetLocation)
-    {
-        var pos = targetLocation;
-        pos.y = 1;
-        transform.position = pos;
-        //teleport sound
     }
 }
