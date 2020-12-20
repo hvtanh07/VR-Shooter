@@ -239,5 +239,5 @@ MonoBehaviour:
   useGravity: 0
   explosionDamage: 15
   explosionRange: 0
-  maxCollisions: 2
-  maxLifetime: 1
+  maxCollisions: 3
+  maxLifetime: 2
