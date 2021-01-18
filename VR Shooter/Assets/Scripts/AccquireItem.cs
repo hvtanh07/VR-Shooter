@@ -18,7 +18,7 @@ public class AccquireItem : MonoBehaviour
     public void ItemAcquired()
     {
         Destroy(gameObject);
-        playerscript.CollectItem(Itemindex);
+        playerscript.CollectItem(Itemindex);      
     }
 
     public void GunAcquired()
@@ -27,11 +27,6 @@ public class AccquireItem : MonoBehaviour
         playerscript.CollectGun();
     }
 
-    public void GunsAcquired()
-    {
-        Destroy(gameObject);
-        playerscript.CollectGun();
-    }
     public void HealthAcquired()
     {
         Destroy(gameObject);

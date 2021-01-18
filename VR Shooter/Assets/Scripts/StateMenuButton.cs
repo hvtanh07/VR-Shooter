@@ -24,7 +24,7 @@ public class StateMenuButton : MonoBehaviour
     }
     public void Click()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1.0f;
     }
 }

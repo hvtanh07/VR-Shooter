@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class BossAim : MonoBehaviour
 {
+    AudioSource bulletShoot;
     // public NavMeshAgent agent;
 
     Transform player;
@@ -25,6 +26,7 @@ public class BossAim : MonoBehaviour
 
     private void Awake()
     {
+        bulletShoot = GetComponent<AudioSource>();
         player = GameObject.Find("Player").transform;
     }
 
@@ -42,7 +44,7 @@ public class BossAim : MonoBehaviour
         {
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-
+            bulletShoot.Play();
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

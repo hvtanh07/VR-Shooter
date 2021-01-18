@@ -7,11 +7,7 @@ public class Player : MonoBehaviour
 {
     public float playerSpeed = 5f;
     public float gravity = 10.0f;
-    public int shootingRange = 50;
-    public float movingRange = 4;
-    public float gunDamage = 5;
     public int startingHealth = 100;
-    public float timeBetweenShot = 0.5f;
     public int currentHealth;
     public int currentMoney =0;
     public bool haveGun;
@@ -21,12 +17,17 @@ public class Player : MonoBehaviour
     public TextMesh healthText;
     public TextMesh MoneyText;
     public TextMesh StateText;
-    public ParticleSystem muzzleFlash;
-    public GameObject hitEffect;
+
     public GameObject Gun;
     
-    Animator gunanim;
+    AudioSource playerAudio;
+    public AudioSource playerCollecItemSound;
     CharacterController controller;
+
+    public AudioClip Win;
+    public AudioClip Lose;
+    public AudioClip Key;
+    public AudioClip Heart;
 
     bool teleportable;
     bool isDead;
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
         haveGun = false;
         accquiredItem = new bool[10];
         for (int i = 0; i < accquiredItem.Length; i++) accquiredItem[i] = false;
-        gunanim = Gun.GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
         controller = gameObject.GetComponent<CharacterController>();
         currentHealth = startingHealth;
         healthText.text = currentHealth.ToString();
@@ -50,18 +51,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        move = move * playerSpeed * Time.deltaTime;
-        move = Camera.main.transform.TransformDirection(move);
-        move.y -= gravity;
-        controller.Move(move);
-                    
-        if (Input.GetButtonDown("Fire1"))
+        if (!isDead)
         {
-            CheckHit();
+            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            {
+                playerAudio.Play();
+            }
+            else if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && playerAudio.isPlaying)
+            {
+                playerAudio.Stop();
+            }
+            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            move = move * playerSpeed * Time.deltaTime;
+            move = Camera.main.transform.TransformDirection(move);
+            move.y -= gravity;
+            controller.Move(move);
         }
     }
+
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
@@ -73,34 +80,23 @@ public class Player : MonoBehaviour
     {
         // Set the death flag so this function won't be called again.
         isDead = true;
-        Time.timeScale = 0.0f;
-        StateText.text = "YOU DIED!!!";
+        StateText.text = "YOU DIED!!!";       
         StateButton.SetActive(true);
+        playerCollecItemSound.clip = Lose;
+        playerCollecItemSound.Play();
     }
     public void Won()
     {
-        Time.timeScale = 0.0f;
-        StateText.text = "YOU WON!!!";
+        StateText.text = "YOU WON!!!";      
         StateButton.SetActive(true);
-    }
-    private void CheckHit()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootingRange))
-        {           
-            if (haveGun && hit.collider.tag != "DoorPanel" && hit.collider.tag != "AcquireItem")
-            {
-                if (timer >= timeBetweenShot)
-                {
-                    muzzleFlash.Play();                  
-                    Shoot(hit);
-                }
-            }
-        }        
-    }
+        playerCollecItemSound.clip = Win;
+        playerCollecItemSound.Play();
+    }    
 
     public void AddHealth(int amount)
     {
+        playerCollecItemSound.clip = Heart;
+        playerCollecItemSound.Play();
         currentHealth += amount;
         if (currentHealth >= startingHealth) 
             currentHealth = startingHealth;
@@ -114,6 +110,8 @@ public class Player : MonoBehaviour
 
     public void CollectItem(int Itemindex)
     {
+        playerCollecItemSound.clip = Key;
+        playerCollecItemSound.Play();
         accquiredItem[Itemindex] = true;
         //acquire Item sound      
     }
@@ -123,25 +121,5 @@ public class Player : MonoBehaviour
         haveGun = true;
         Gun.SetActive(true);
         //acquire Item sound      
-    }
-    private void Shoot(RaycastHit hit)
-    {
-        timer = 0f;
-        gunanim.SetTrigger("fired");
-        Enemy enemy = hit.transform.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemy.TakeDamege(gunDamage);
-        }
-        else
-        {
-            Bosss boss = hit.transform.GetComponent<Bosss>();
-            if (boss != null)
-            {
-                boss.TakeDamege(gunDamage);
-            }
-        }
-        Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
-        //Gun sound
-    }
+    }   
 }

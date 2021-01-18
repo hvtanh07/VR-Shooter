@@ -20,7 +20,7 @@ public class moveToNextScene : MonoBehaviour
             //delete prevStage
             //spawn nextStage
         }
-        door.unlocked = false;
+        door.doorClose();
     }
     void Start()
     {

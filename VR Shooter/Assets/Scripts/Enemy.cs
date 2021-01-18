@@ -11,12 +11,16 @@ public class Enemy : MonoBehaviour
     Animator anim;
     Player playerscript;
     Vector3 originalPos;
+    AudioSource enemyAudio;
     NavMeshAgent nav;
     bool followingPlayer;
 
     public float timeBetweenAttacks = 2f;    
     public int attackDamage = 10;
     public float distoDetect = 15;
+    public AudioClip enemyHurt;
+    public AudioClip enemyDead;
+    public AudioClip enemyAttack;
 
     bool playerInRange;
     bool attacked;
@@ -24,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        enemyAudio = GetComponent<AudioSource>();
         originalPos = transform.position;
         followingPlayer = true;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -93,6 +98,8 @@ public class Enemy : MonoBehaviour
     {      
         timer = 0f;
         anim.SetTrigger("Attack");
+        enemyAudio.clip = enemyAttack;
+        enemyAudio.Play();
         if (playerscript.currentHealth > 0 && enemyHealth >= 0)
         {
             playerscript.TakeDamage(attackDamage);
@@ -101,12 +108,15 @@ public class Enemy : MonoBehaviour
     public void TakeDamege(float amount)
     {
         attacked = true;
-        enemyHealth -= amount;       
+        enemyHealth -= amount;
+        enemyAudio.clip = enemyHurt;
         if (enemyHealth <= 0)
         {
             death();
+            enemyAudio.clip = enemyDead;
             gameObject.layer = 2; 
         }else anim.SetTrigger("Damaged");
+        enemyAudio.Play();
     }
 
     private void death()

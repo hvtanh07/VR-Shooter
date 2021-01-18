@@ -202,9 +202,9 @@
     <Compile Include="Assets\Scripts\Bosss.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\EnemyAiTutorial.cs" />
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\StateMenuButton.cs" />
     <Compile Include="Assets\Scripts\changeColor.cs" />
     <Compile Include="Assets\Scripts\moveToNextScene.cs" />

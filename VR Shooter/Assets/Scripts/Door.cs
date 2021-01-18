@@ -7,7 +7,10 @@ public class Door : MonoBehaviour
     public int Doorindex;
     public Renderer indicator;
     public GameObject door;
+    public AudioClip wrongDoor;
+    public AudioClip doorOpen;
 
+    AudioSource doorAudio;
     Color originalColor;
     GameObject player;
     Player playerscript;
@@ -17,8 +20,8 @@ public class Door : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        unlocked = false;
-
+        doorAudio = GetComponent<AudioSource>();
+        unlocked = false;        
         originalColor = GetComponent<Renderer>().material.color;
 
         player = GameObject.Find("Player");
@@ -28,10 +31,10 @@ public class Door : MonoBehaviour
     { 
         if (unlocked)
         {
-            door.transform.position = Vector3.MoveTowards(door.transform.position, new Vector3 (door.transform.position.x,-3, door.transform.position.z), 0.02f);
+            door.transform.position = Vector3.MoveTowards(door.transform.position, new Vector3 (door.transform.position.x,-3, door.transform.position.z), 0.01f);
         }else
         {
-            door.transform.position = Vector3.MoveTowards(door.transform.position, new Vector3(door.transform.position.x, 1.1f, door.transform.position.z), 0.02f);
+            door.transform.position = Vector3.MoveTowards(door.transform.position, new Vector3(door.transform.position.x, 1.1f, door.transform.position.z), 0.01f);
         }
     }
 
@@ -53,6 +56,8 @@ public class Door : MonoBehaviour
             {
                 indicator.material.color = Color.green;
                 unlocked = true;
+                doorAudio.clip = doorOpen;
+                doorAudio.Play();
             }
             else
             {
@@ -64,8 +69,18 @@ public class Door : MonoBehaviour
         else
         {
             indicator.material.color = Color.red;
+            doorAudio.clip = wrongDoor;
+            doorAudio.Play();
             //rejected sound
         }
     }
-   
+    public void doorClose()
+    {
+        if (unlocked)
+        {
+            unlocked = false;
+            doorAudio.clip = doorOpen;
+            doorAudio.Play();
+        }
+    }
 }

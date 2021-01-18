@@ -7,6 +7,7 @@ public class Bosss : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     public float enemyHealth = 100;
+    AudioSource bossAudio;
     public GameObject keydrop;
     GameObject player;
     Animator anim;
@@ -17,12 +18,15 @@ public class Bosss : MonoBehaviour
     public float timeBetweenAttacks = 2f;
     public int attackDamage = 10;
     public float distoDetect = 15;
+    public AudioClip bossHurt;
+    public AudioClip bossDead;
     bool attacked;
 
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        bossAudio = GetComponent<AudioSource>();
         anim.SetBool("Walk Forward", true);
         followingPlayer = true;
         player = GameObject.FindGameObjectWithTag("Player");      
@@ -92,12 +96,15 @@ public class Bosss : MonoBehaviour
     {
         attacked = true;
         enemyHealth -= amount;
+        bossAudio.clip = bossHurt;
         if (enemyHealth <= 0)
         {
             death();
+            bossAudio.clip = bossDead;
             gameObject.layer = 2;
         }
         else anim.SetTrigger("Damaged");
+        bossAudio.Play();
     }
 
     private void death()

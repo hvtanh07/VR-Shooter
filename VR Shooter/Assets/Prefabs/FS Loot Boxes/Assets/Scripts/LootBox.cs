@@ -11,6 +11,7 @@ public class LootBox : MonoBehaviour
     public int amount = 10;
 
     bool bouncingBox = true;
+    AudioSource boxAudio;
     private GameObject player;
     private Player playerscript;
     public bool isOpen { get; set; }   
@@ -20,7 +21,7 @@ public class LootBox : MonoBehaviour
     {
         // gets the animator
         animator = GetComponent<Animator>();
-
+        boxAudio = GetComponent<AudioSource>();
         // set the animation to bounce or not
         BounceBox(bouncingBox);
         player = GameObject.Find("Player");
@@ -37,7 +38,7 @@ public class LootBox : MonoBehaviour
         // avoid opening when it's already open
         if (isOpen) return;
         isOpen = true;
-
+        boxAudio.Play();
         // play the open animation
         if (animator) animator.Play("Open");
         //player get money
