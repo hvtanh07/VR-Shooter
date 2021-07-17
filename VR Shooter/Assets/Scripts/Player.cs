@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float gravity = 10.0f;
     public int startingHealth = 100;
     public int currentHealth;
-    public int currentMoney =0;
+    public int currentMoney;
     public bool haveGun;
     public GameObject StateButton;
 
@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     {
         StateButton.SetActive(false);
         haveGun = false;
+        currentMoney = 0;
         accquiredItem = new bool[10];
         for (int i = 0; i < accquiredItem.Length; i++) accquiredItem[i] = false;
         playerAudio = GetComponent<AudioSource>();
