@@ -7,13 +7,8 @@ public class BossAim : MonoBehaviour
     // public NavMeshAgent agent;
 
     Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsPlayer;
     public float health;
-
-    //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
 
     //Attacking
     public float timeBetweenAttacks;
