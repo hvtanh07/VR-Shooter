@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public TextMesh healthText;
     public TextMesh MoneyText;
     public TextMesh StateText;
+    public TextMesh Timer;
+    public TextMesh TimeEnd;
 
     public GameObject Gun;
     
@@ -31,15 +33,17 @@ public class Player : MonoBehaviour
 
     bool teleportable;
     bool isDead;
-    float timer;
+    float startTime;
+    //float timer;
 
-    
+
 
     private void Start()
     {
         StateButton.SetActive(false);
         haveGun = false;
         currentMoney = 0;
+        startTime = Time.time;
         accquiredItem = new bool[10];
         for (int i = 0; i < accquiredItem.Length; i++) accquiredItem[i] = false;
         playerAudio = GetComponent<AudioSource>();
@@ -48,6 +52,7 @@ public class Player : MonoBehaviour
         healthText.text = currentHealth.ToString();
         MoneyText.text = currentMoney.ToString();
         StateText.text = "  ";
+        TimeEnd.text = "  ";
     }
     // Update is called once per frame
     void Update()
@@ -67,6 +72,7 @@ public class Player : MonoBehaviour
             move = Camera.main.transform.TransformDirection(move);
             move.y -= gravity;
             controller.Move(move);
+            TimerCounting();
         }
     }
 
@@ -81,17 +87,25 @@ public class Player : MonoBehaviour
     {
         // Set the death flag so this function won't be called again.
         isDead = true;
-        StateText.text = "YOU DIED!!!";       
+        StateText.text = "YOU DIED!!!";
+        TimeEnd.text = "Your time is: " + Timer.text;
         StateButton.SetActive(true);
         playerCollecItemSound.clip = Lose;
         playerCollecItemSound.Play();
+        Timer.text = "   ";
+        healthText.text = "  ";
+        MoneyText.text = "   ";
     }
     public void Won()
     {
-        StateText.text = "YOU WON!!!";      
+        StateText.text = "YOU WON!!!";
+        TimeEnd.text = "Your time is: " + Timer.text;
         StateButton.SetActive(true);
         playerCollecItemSound.clip = Win;
         playerCollecItemSound.Play();
+        Timer.text = "   ";
+        healthText.text = "  ";
+        MoneyText.text = "   ";
     }    
 
     public void AddHealth(int amount)
@@ -107,6 +121,14 @@ public class Player : MonoBehaviour
     {
         currentMoney += amount;      
         MoneyText.text = currentMoney.ToString();
+    }
+
+    public void TimerCounting()
+    {
+        float t = Time.time - startTime;
+        string minutes = ((int)t / 60).ToString();
+        string seconds = (t % 60).ToString("f2");
+        Timer.text = minutes + ":" + seconds;
     }
 
     public void CollectItem(int Itemindex)

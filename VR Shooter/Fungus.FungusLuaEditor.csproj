@@ -270,13 +270,13 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Google.ProtocolBuffers">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
     </Reference>
     <Reference Include="PackageManagerAssembly">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Assets/Prefabs/EffectExamples/Editor/PackageManagerAssembly/PackageManagerAssembly.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Assets/Prefabs/EffectExamples/Editor/PackageManagerAssembly/PackageManagerAssembly.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -633,16 +633,16 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

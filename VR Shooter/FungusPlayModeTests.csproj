@@ -243,7 +243,7 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.13f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.13f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -591,16 +591,16 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.13f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Unity Project/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
