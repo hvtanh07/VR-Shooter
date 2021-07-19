@@ -632,12 +632,7 @@
       <HintPath>D:/Unity Project/New folder/VR-Shooter/VR Shooter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Fungus.csproj">
-      <Project>{9C440EF1-2581-7620-9DCE-40BE479211E3}</Project>
-      <Name>Fungus</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup></ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

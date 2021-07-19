@@ -686,34 +686,6 @@
       <Project>{5EAEFAC1-09DD-F776-0C0C-D08CEEF54FC8}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="Fungus.FungusLuaEditor.csproj">
-      <Project>{57F08499-DA7D-9BE9-80CC-587C8F5EBF6C}</Project>
-      <Name>Fungus.FungusLuaEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="FungusEditor.csproj">
-      <Project>{EB456491-845E-827D-F071-1CC4BECA8847}</Project>
-      <Name>FungusEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Fungus.LineEndingsEditor.csproj">
-      <Project>{6FF09C83-BB1C-0C03-BFCA-956FE11DF022}</Project>
-      <Name>Fungus.LineEndingsEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="FungusExamples.csproj">
-      <Project>{4DE0F88F-F3FE-1FE9-0D54-65DED124A31B}</Project>
-      <Name>FungusExamples</Name>
-    </ProjectReference>
-    <ProjectReference Include="Fungus.csproj">
-      <Project>{9C440EF1-2581-7620-9DCE-40BE479211E3}</Project>
-      <Name>Fungus</Name>
-    </ProjectReference>
-    <ProjectReference Include="Fungus.UsfxrEditor.csproj">
-      <Project>{40496D8F-07E5-0346-887C-774735F82E28}</Project>
-      <Name>Fungus.UsfxrEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Fungus.FungusLuaJSONCheckerEditor.csproj">
-      <Project>{A554F348-92E7-F56F-49C8-5F42E0839B6C}</Project>
-      <Name>Fungus.FungusLuaJSONCheckerEditor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
