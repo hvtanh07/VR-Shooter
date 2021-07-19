@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delaytimer: 79
-  nextscene: Dialog1
+  nextscene: Stage1
 --- !u!1 &375126482
 GameObject:
   m_ObjectHideFlags: 0
