@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9a3901c3d23098458bb8a13df34b845, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,23 +121,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6888864752301067660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db1e7104c2472b4390dc4db824f89ee, type: 3}
+  m_Script: {fileID: 11500000, guid: c6d1f1360048f3344925cc6871296aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7310188396211463324}
-  explosion: {fileID: 924385698551278738, guid: 26d7cbf3864b1f84cb93f20ea9ca807f,
-    type: 3}
+  explosion: {fileID: 0}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 2048
-  bounciness: 0
-  useGravity: 0
-  explosionDamage: 30
-  explosionRange: 1
-  explosionForce: 0
-  maxCollisions: 1
-  maxLifetime: 4
-  explodeOnTouch: 1
+    m_Bits: 0
+  bounciness: 0.096
+  useGravity: 1
+  explosionDamage: 15
+  explosionRange: 3
+  maxCollisions: 3
+  maxLifetime: 5
 --- !u!96 &4125736753335297287
 TrailRenderer:
   serializedVersion: 2

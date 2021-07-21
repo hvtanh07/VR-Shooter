@@ -222,9 +222,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 263a0000
-      m_LastClickedID: 14886
-      m_ExpandedIDs: 847cffff1afbffff56c9010078c90100c0c90100
+      m_SelectedIDs: 0e700000
+      m_LastClickedID: 0
+      m_ExpandedIDs: eabbffff3afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -312,9 +312,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.6931436, y: 2.1291823, z: -3.3937387}
+    m_Target: {x: 0, y: 1.5, z: 2.5}
     speed: 2
-    m_Value: {x: -3.6931436, y: 2.1291823, z: -3.3937387}
+    m_Value: {x: 0, y: 1.5, z: 2.5}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -336,10 +336,10 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0, y: 0}
+      m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
         m_Target: 1
@@ -360,13 +360,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.000596567, y: 0.99760365, z: 0.008669719, w: -0.068642415}
+    m_Target: {x: 0.18785895, y: -0.01414092, z: 0.002708899, w: 0.9821005}
     speed: 2
-    m_Value: {x: 0.00059656694, y: 0.99760354, z: 0.008669718, w: -0.06864241}
+    m_Value: {x: 0.18785712, y: -0.014140782, z: 0.0027088725, w: 0.9820909}
   m_Size:
-    m_Target: 1.2247449
+    m_Target: 3.0655472
     speed: 2
-    m_Value: 1.2247449
+    m_Value: 3.0655472
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -412,10 +412,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 468
-    y: 181
-    width: 973
-    height: 501
+    x: 303.2
+    y: 73.6
+    width: 919
+    height: 427
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &10
 MonoBehaviour:
@@ -483,20 +483,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\github\VR-Shooter\VR Shooter
+  m_LastProjectPath: D:\Github\VR-Shooter\VR Shooter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: 226e0000
-    m_LastClickedID: 28194
-    m_ExpandedIDs: 00000000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e000000ca9a3b
+    scrollPos: {x: 0, y: 56}
+    m_SelectedIDs: fa6f0000
+    m_LastClickedID: 28666
+    m_ExpandedIDs: 00000000b86f0000ba6f0000bc6f0000be6f0000c06f0000c26f0000c46f0000c66f0000c86f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -512,7 +512,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 10}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -524,7 +524,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000146e0000166e0000186e00001a6e00001c6e00001e6e0000206e0000226e0000246e0000266e000000ca9a3b
+    m_ExpandedIDs: 00000000b86f0000ba6f0000bc6f0000be6f0000c06f0000c26f0000c46f0000c66f0000c86f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -549,24 +549,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 263a0000
-    m_LastClickedInstanceID: 14886
+    m_SelectedInstanceIDs: 0e700000
+    m_LastClickedInstanceID: 28686
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000
+    m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Player
-      m_OriginalName: Player
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 15350
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -576,7 +576,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 95}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 209
