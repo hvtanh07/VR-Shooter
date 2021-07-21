@@ -17275,6 +17275,12 @@ PrefabInstance:
       propertyPath: TimeEnd
       value: 
       objectReference: {fileID: 1765336508}
+    - target: {fileID: 9136812994323408946, guid: 69f11ed7c2dccc44baa2588be100cbc8,
+        type: 3}
+      propertyPath: sumMoney
+      value: 
+      objectReference: {fileID: 5977008887059230643, guid: 81b87ff03fefcae4194c3543585eabf3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f11ed7c2dccc44baa2588be100cbc8, type: 3}
 --- !u!1001 &2988183055734509260

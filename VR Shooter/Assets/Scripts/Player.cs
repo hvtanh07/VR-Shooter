@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public TextMesh StateText;
     public TextMesh Timer;
     public TextMesh TimeEnd;
+    public SumMoney sumMoney;
 
     public GameObject Gun;
     
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
         Timer.text = "   ";
         healthText.text = "  ";
         MoneyText.text = "   ";
+       
     }
     public void Won()
     {
@@ -121,6 +123,7 @@ public class Player : MonoBehaviour
     {
         currentMoney += amount;      
         MoneyText.text = currentMoney.ToString();
+        sumMoney.Money += amount;
     }
 
     public void TimerCounting()

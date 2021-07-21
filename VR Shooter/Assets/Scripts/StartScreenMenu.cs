@@ -6,6 +6,7 @@ public class StartScreenMenu : MonoBehaviour
 {
     [SerializeField]
     private string nextscene;
+    public Player player;
     public void PlayGame()
     {
         SceneManager.LoadScene(nextscene);
